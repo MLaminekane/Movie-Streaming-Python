@@ -1,0 +1,172 @@
+/* Utilisation de variables pour les couleurs principales */
+:root {
+--color-primary:  black;
+--color-secondary: #0066ff;
+}
+
+/* Style général de la page */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #161617;
+color: white;
+}
+
+/* Style du header et du menu de navigation */
+header {
+background-color: var(--color-primary);
+color: #fff;
+padding: 20px;
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+}
+
+nav li {
+margin-right: 20px;
+}
+
+nav a {
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+transition: color 0.3s ease;
+}
+
+nav a:hover {
+color: var(--color-secondary);
+}
+
+nav a.active {
+color: var(--color-secondary);
+}
+
+/* Style de la section de la page de contact */
+.contact {
+padding: 50px;
+}
+
+.container {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.contact h1 {
+margin-top: 0;
+}
+
+.contact p {
+margin-bottom: 30px;
+}
+
+form label {
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
+}
+
+form input,
+form textarea {
+display: block;
+width: 100%;
+padding: 10px;
+border-radius: 5px;
+border: 2px solid #ccc;
+margin-bottom: 20px;
+}
+
+form button {
+background-color: var(--color-primary);
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+form button:hover {
+background-color: var(--color-secondary);
+}
+
+.info h2 {
+margin-top: 40px;
+}
+
+.info ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.info li {
+margin-bottom: 10px;
+}
+
+.info i {
+margin-right: 10px;
+}
+
+/* Style du footer */
+footer {
+background-color: #333;
+color: #fff;
+padding: 20px;
+text-align: center;
+}
+
+footer p {
+margin: 0;
+margin-bottom: 10px;
+}
+
+.social {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+}
+
+.social li {
+margin-right: 20px;
+}
+
+.social a {
+color: #fff;
+text-decoration: none;
+font-size: 24px;
+transition: color 0.3s ease;
+}
+
+.social a:hover {
+color: var(--color-primary);
+}
+
+/* Animation du formulaire */
+.shake {
+animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+0% {
+transform: translateX(0);
+}
+25% {
+transform: translateX(10px);
+}
+50% {
+transform: translateX(-10px);
+}
+75% {
+transform: translateX(10px);
+}
+100% {
+transform: translateX(0);
+}
+}

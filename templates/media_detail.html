@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Home - MovieStream</title>
+  <style>
+    @import "compass/css3";
+
+    input[type="radio"] {
+      position: fixed;
+      top: 0;
+      right: 100%;
+    }
+
+    label {
+      font-size: 1em;
+      margin: 0;
+      float: left;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    input[type="radio"]:checked ~ input + label {
+      background: none;
+      color: #aaa;
+    }
+
+    input + label {
+      color: orange;
+      margin: 0 0 1em 0;
+    }
+
+    input + label:first-of-type {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    input:checked + label {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    hr {
+      clear: both;
+      border: 0;
+      border-top: 2px solid #999;
+      margin: 1em 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo"><a class="point" href="{% url 'home' %}">MovieStream</a></div>
+    <ul class="links">
+      <li><a class="point" href="{% url 'home' %}">Accueil</a></li>
+      <li><a class="point" href="{% url 'films' %}">Films</a></li>
+      <li><a class="point" href="{% url 'series' %}">Series</a></li>
+      <li><a class="point" href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+    
+    <div class="group action_btn">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <g>
+            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+          </g>
+      </svg>
+      <input placeholder="Rechercher" type="search" class="input">
+    </div>
+
+    <div class="toggle_btn">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </div>
+  </div>
+
+  <div class="dropdown_menu">
+    <li><a href="{% url 'home' %}">Accueil</a></li>
+    <li><a href="{% url 'films' %}">Films</a></li>
+    <li><a href="{% url 'series' %}">Series</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li>
+      <div class="group action_btn" id="form">
+        <input placeholder="Rechercher" type="search" class="input search" id="search">
+      </div>
+    </li>
+  </div>
+
+  <nav style="display: flex; align-items: center; justify-content: center;">
+    <h1 style="color: white; font-size: 3vh;">{{ Media.title }} en streaming</h1>
+  </nav>
+  
+  <div style="display: flex;" >
+    <div>
+      <div class="film">
+        <img class="images" src="{{ Media.get_img }}" alt="Film">
+        <h3>Titre Original: {{ Media.title }}</h3>
+      </div>
+      
+    </div>
+
+    <div>
+      <h3>Titre Original: {{Media.title}}</h3>
+      <h3>Date: {{Media.year}}</h3>
+      <h3>Genre: {{Media.genre}}</h3>
+      <h3>Acteurs: {{ Media.acteurs }}</h3>
+      <h3>Realisateurs: {{ Media.realisateur }}</h3>
+      <h3>Version: VF</h3>
+      <h3>Qualite: 1080p</h3>
+      <div class="rating">
+        <input type="radio" name="test" id="one" checked />
+        <label for="one"><i class="fa fa-star"></i></label>
+        <input type="radio" name="test" id="two" />
+        <label for="two"><i class="fa fa-star"></i></label>
+        <input type="radio" name="test" id="three" />
+        <label for="three"><i class="fa fa-star"></i></label>
+        <input type="radio" name="test" id="four" />
+        <label for="four"><i class="fa fa-star"></i></label>
+        <input type="radio" name="test" id="five" />
+        <label for="five"><i class="fa fa-star"></i></label>
+      </div>
+    </div>
+
+  </div>
+  <div>
+    <h3>Description: </h3>
+    <h3>{{Media.description}}</h3>
+  </div>
+
+  <div class="lecteurWindow">
+    <di class="lecteur">
+      
+      <iframe width="100%" height="90%" src="{{Media.annonce}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    </div>
+  </div>
+
+<footer style="margin-top: 1.3vh;">
+  <div class="container">
+    <p>&copy; 2023 MovieStream - Tous droits réservés</p>
+    <ul class="social">
+      <li><a href="https://github.com/MLaminekane"><i class="fab fa-github"></i></a></li>
+      <li><a href="https://twitter.com/mlaminekane01"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+  </div>
+</footer>
+<script src="{% static '/Js/apps.js' %}"></script>
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+  <script>
+    var video = document.getElementById("maVideo");
+    var playPauseIcon = document.getElementById("playPauseIcon");
+    var fullScreenIcon = document.getElementById("fullScreenIcon");
+    var isFullScreen = false;
+
+    function togglePlayPause() {
+      if (video.paused) {
+        video.play();
+        playPauseIcon.classList.remove("fa-play");
+        playPauseIcon.classList.add("fa-pause");
+      } else {
+        video.pause();
+        playPauseIcon.classList.remove("fa-pause");
+        playPauseIcon.classList.add("fa-play");
+      }
+    }
+
+    function skip(seconds) {
+      video.currentTime += seconds;
+    }
+
+    function toggleFullScreen() {
+      if (!isFullScreen) {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) {
+          video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+        fullScreenIcon.classList.remove("fa-expand");
+        fullScreenIcon.classList.add("fa-compress");
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+        fullScreenIcon.classList.remove("fa-compress");
+        fullScreenIcon.classList.add("fashrink");
+        }
+        isFullScreen = !isFullScreen;
+    }
+</script>
+
+
+</body>
+</html>
