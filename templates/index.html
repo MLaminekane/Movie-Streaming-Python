@@ -1,14 +1,225 @@
-
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Home - MovieStream</title>
 </head>
 <body>
-  <a href="{% url 'home' %}">continuer</a>
+  <div class="navbar">
+    <div class="logo"><a class="point" href="{% url 'home' %}">MovieStream</a></div>
+    <ul class="links">
+      <li><a class="point" href="{% url 'home' %}">Accueil</a></li>
+      <li><a class="point" href="{% url 'films' %}">Films</a></li>
+      <li><a class="point" href="{% url 'series' %}">Series</a></li>
+      <li><a class="point" href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+    
+    <div class="group action_btn">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <g>
+              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+          </g>
+      </svg>
+      <input placeholder="Rechercher" type="search" class="input">
+    </div>
+
+    <div class="toggle_btn">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </div>
+  </div>
+
+  <div class="dropdown_menu">
+    <li><a href="{% url 'home' %}">Accueil</a></li>
+    <li><a href="{% url 'films' %}">Films</a></li>
+    <li><a href="{% url 'series' %}">Series</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li>
+      <div class="group action_btn" id="form">
+        <input placeholder="Rechercher" type="search" class="input search" id="search">
+      </div>
+    </li>
+  </div>
+
+  <div class="main";">
+    <div class="recommandation">
+      <div class="parent" >
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="films_section">
+    <div class="films_items" id="main">
+      {% for movie in Media %}
+        <a href="{% url 'film_detail' movie.id %}">
+          <div class="film">
+              <img class="images" src="{{movie.get_img}}" alt="Film">
+              <h3>{{movie.title}}</h3>
+          </div>
+      </a>
+        {% endfor %}
+    </div>
+
+    <div class="choice_menu">
+      <div>
+        <div style="display: flex;align-items: center;background-color: #3e5061;" >
+          <i class="fa-solid fa-video fa-lg"></i>
+          <h2 class="title">PAR GENRE</h2>
+        </div>
+        <div class="categories">
+          <div class="spacement">
+            <a href="{% url 'media_genre' movie_genre='Action' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Action</span>
+            </a>
+          </div>
+          <div style="display: flex;">
+            <a href="{% url 'media_genre' movie_genre='Animation' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Animation</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Aventure' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Aventure</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Comedie' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Comedie</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Drame' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Drame</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Horreur' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Horreur</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Famille' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Famille</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Guerre' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Guerre</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Policier' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Policier</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Romance' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Romance</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_genre' movie_genre='Fiction' %}">
+              <i class="fa-solid fa-video"></i>
+              <span class="cat-space">Fiction</span>
+            </a>
+          </div>
+        </div>        
+      </div>
+
+
+      <div style="margin-top: 3vh;">
+        <div style="display: flex; align-items: center;">
+          <i class="fa-solid fa-calendar-days"></i>
+          <h2 class="title">PAR ANNEE</h2>
+        </div>
+        <div class="annees">
+          <div>
+            <a href="{% url 'media_year' movie_year='2023' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2023</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2022' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2022</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2021' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2021</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2020' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2020</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2019' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2019</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2018' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2018</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2017' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2017</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2016' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2016</span>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'media_year' movie_year='2015' %}">
+              <i class="fa-solid fa-calendar-days"></i>
+              <span class="year-space">2015</span>
+            </a>
+          </div>
+        </div>
+      </div>  
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top: 1.3vh;">
+    <div class="container">
+      <p>&copy; 2023 MovieStream - Tous droits réservés</p>
+      <ul class="social">
+        <li><a href="https://github.com/MLaminekane"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://twitter.com/mlaminekane01"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="{% static '/Js/apps.js' %}"></script>
+
 </body>
 </html>
-
