@@ -1390,7 +1390,7 @@ S2.define('select2/keys',[
     PAGE_UP: 33,
     PAGE_DOWN: 34,
     END: 35,
-    HOME: 36,
+    index: 36,
     LEFT: 37,
     UP: 38,
     RIGHT: 39,

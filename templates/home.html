@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <title>Home - MovieStream</title>
+  <title>index - MovieStream</title>
 </head>
 <body>
   <div class="navbar">
-    <div class="logo"><a class="point" href="{% url 'home' %}">MovieStream</a></div>
+    <div class="logo"><a class="point" href="{% url 'index' %}">MovieStream</a></div>
     <ul class="links">
-      <li><a class="point" href="{% url 'home' %}">Accueil</a></li>
+      <li><a class="point" href="{% url 'index' %}">Accueil</a></li>
       <li><a class="point" href="{% url 'films' %}">Films</a></li>
       <li><a class="point" href="{% url 'series' %}">Series</a></li>
       <li><a class="point" href="{% url 'contact' %}">Contact</a></li>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="dropdown_menu">
-    <li><a href="{% url 'home' %}">Accueil</a></li>
+    <li><a href="{% url 'index' %}">Accueil</a></li>
     <li><a href="{% url 'films' %}">Films</a></li>
     <li><a href="{% url 'series' %}">Series</a></li>
     <li><a href="{% url 'contact' %}">Contact</a></li>

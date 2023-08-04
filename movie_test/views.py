@@ -3,9 +3,9 @@ from movie_test.models import Media, Movie, Series, Serie
 
 
 # Create your views here.
-def home(request):
+def index(request):
     media = Media.objects.all()
-    return render(request, 'home.html', {'Media':media,'test':media[0],'test2':media[0].get_img(),'test3':media[0].get_average_rating()})
+    return render(request, 'index.html', {'Media':media,'test':media[0],'test2':media[0].get_img(),'test3':media[0].get_average_rating()})
 def films(request):
     media = Movie.objects.all()
     return render(request, 'films.html',{'Media':media})
