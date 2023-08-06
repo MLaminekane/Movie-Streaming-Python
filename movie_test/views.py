@@ -3,9 +3,17 @@ from movie_test.models import Media, Movie, Series, Serie
 
 
 # Create your views here.
+# def index(request):
+#     media = Media.objects.all()
+#     return render(request, 'index.html', {'Media':media,'test':media[0],'test2':media[0].get_img(),'test3':media[0].get_average_rating()})
+
 def index(request):
     media = Media.objects.all()
-    return render(request, 'index.html', {'Media':media,'test':media[0],'test2':media[0].get_img(),'test3':media[0].get_average_rating()})
+    if media:
+        return render(request, 'index.html', {'Media': media, 'test': media[0], 'test2': media[0].get_img(), 'test3': media[0].get_average_rating()})
+    else:
+        return render(request, 'index.html', {'Media': [], 'test': None, 'test2': None, 'test3': None})
+
 def films(request):
     media = Movie.objects.all()
     return render(request, 'films.html',{'Media':media})

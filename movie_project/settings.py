@@ -19,6 +19,7 @@ SECRET_KEY = 'django-insecure-augiy=4-^nk$=00)#=q*m@=#6!y&%qsj9b_d@#_ad#k2+dl#pn
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -76,16 +77,7 @@ WSGI_APPLICATION = 'movie_project.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': "django.db.backends.postgresql",  # Utilisez le bon backend pour votre cas
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': '64m67xMW*vap$UH',
-#         'HOST': 'db.qqxeohgtrdpxjufmdclk.supabase.co',
-#         'PORT': '5432',
-#     }
-# }
+
 
 DATABASES = {
     "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
