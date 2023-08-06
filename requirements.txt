@@ -1,5 +1,5 @@
 asgiref==3.6.0
-Django==4.1.7
+Django==3.2.8
 python_datautil==2.8.2
 six==1.16.0
 sqlparse==0.4.3
