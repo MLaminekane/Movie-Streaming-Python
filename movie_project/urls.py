@@ -2,6 +2,8 @@ from django.urls import path
 from movie_test import views
 from django.views.generic import TemplateView
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -16,3 +18,5 @@ urlpatterns = [
     path('media/realisateur/<str:movie_realisateur>/', views.film_realisateur, name='media_realisateur'),
     path('media/annonce/<str:movie_annonce>/', views.film_annonce, name='media_annonce'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
