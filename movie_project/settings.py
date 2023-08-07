@@ -8,7 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIRECTORY = os.path.join(BASE_DIR, 'templates')
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -63,7 +62,6 @@ TEMPLATES = [
 ]
 
 
-
 WSGI_APPLICATION = 'movie_project.wsgi.application'
 
 
@@ -80,8 +78,19 @@ WSGI_APPLICATION = 'movie_project.wsgi.application'
 
 
 DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "moviedb_d4ak",            # Nom de la base de données
+        "USER": "moviedb_d4ak_user",       # Nom d'utilisateur
+        "PASSWORD": "gnw6ahv0eBt8QpcMrHH4twuhdGKDUvTw",  # Mot de passe
+        "HOST": "dpg-cj7ui3djeehc739pg5o0-a",  # Hôte
+        "PORT": "5432",                   # Port
+    }
 }
+
+# Si vous utilisez également DATABASE_URL depuis les variables d'environnement
+DATABASES["default"] = dj_database_url.parse(os.environ.get("DATABASE_URL"))
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -119,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
-STATICFILES_DIRS = [BASE_DIR  / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
